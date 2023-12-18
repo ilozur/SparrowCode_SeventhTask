@@ -12,11 +12,15 @@ struct ContentView: View {
     var body: some View {
         if state {
             ExpandedView().onTapGesture {
-                state.toggle()
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    state.toggle()
+                }
             }
         } else {
             CollapsedView().onTapGesture {
-                state.toggle()
+                withAnimation(.easeInOut(duration: 0.25)) {
+                    state.toggle()
+                }
             }
         }
     }

@@ -10,12 +10,14 @@ import SwiftUI
 struct CollapsedView: View {
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(.blue)
                 .frame(width: 80, height: 50)
                 .padding(10)
+            
             Text("Open")
-                .foregroundStyle(.white).bold()
+                .foregroundStyle(.white)
+                .font(.system(size: 20, weight: .bold))
         }
     }
 }

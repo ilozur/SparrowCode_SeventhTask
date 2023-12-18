@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ExpandedView: View {
     var body: some View {
-        Text("Expanded")
+        ZStack(alignment: .topLeading) {
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundStyle(.blue)
+                .frame(width: 325, height: 400)
+            
+            Text("\(Image(systemName: "arrowshape.backward.fill")) Back")
+                .foregroundStyle(.white)
+                .font(.system(size: 20, weight: .bold))
+                .padding(20)
+        }
     }
 }
 
