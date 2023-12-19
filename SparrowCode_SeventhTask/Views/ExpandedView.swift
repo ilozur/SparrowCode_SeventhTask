@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct ExpandedView: View {
-    @Binding var state: Bool
+    @Binding var isExpanded: Bool
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(.blue)
-                .frame(width: 325, height: 400)
-            
-            Text("\(Image(systemName: "arrowshape.backward.fill")) Back")
-                .foregroundStyle(.white)
-                .font(.system(size: 20, weight: .bold))
-                .padding(20)
-                .onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.25)) {
-                        state.toggle()
-                    }
-                }
-        }
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                isExpanded.toggle()
+            }
+        }, label: {
+            HStack {
+                Image(systemName: "arrowshape.backward.fill")
+                    .foregroundStyle(.white)
+                Text("Back")
+                    .foregroundStyle(.white)
+                    .font(.system(size: 20, weight: .bold))
+            }
+            .padding()
+        })
+        .opacity(isExpanded ? 1 : 0)
     }
 }

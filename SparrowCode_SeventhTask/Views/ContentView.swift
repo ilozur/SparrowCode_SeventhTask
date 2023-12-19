@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var state: Bool = false
+    @State private var isExpanded = false
+    
     var body: some View {
-        ZStack {
-            if state {
-                ExpandedView(state: $state)
-            } else {
-                CollapsedView(state: $state)
+        HStack {
+            VStack {
+                ZStack {
+                    CollapsedView(isExpanded: $isExpanded)
+                    ExpandedView(isExpanded: $isExpanded)
+                }
+                Spacer().frame(height:  isExpanded ? 400 : 0)
             }
+            Spacer().frame(width: isExpanded ? 200 : 0)
         }
-        .position(x: state ? UIScreen.main.bounds.width / 2 : UIScreen.main.bounds.width - 75,
-                  y: state ? UIScreen.main.bounds.height / 2 : UIScreen.main.bounds.height - 125)
+        .background(.blue)
+        .cornerRadius(15)
+        .position(x: isExpanded ? UIScreen.main.bounds.width / 2 : UIScreen.main.bounds.width - 75,
+                  y: isExpanded ? UIScreen.main.bounds.height / 2 : UIScreen.main.bounds.height - 115)
     }
 }
 
