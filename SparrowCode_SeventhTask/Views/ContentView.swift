@@ -11,17 +11,9 @@ struct ContentView: View {
     @State private var state: Bool = false
     var body: some View {
         if state {
-            ExpandedView().onTapGesture {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    state.toggle()
-                }
-            }
+            ExpandedView(state: $state)
         } else {
-            CollapsedView().onTapGesture {
-                withAnimation(.easeInOut(duration: 0.25)) {
-                    state.toggle()
-                }
-            }
+            CollapsedView(state: $state)
         }
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExpandedView: View {
+    @Binding var state: Bool
     var body: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 20)
@@ -18,10 +19,11 @@ struct ExpandedView: View {
                 .foregroundStyle(.white)
                 .font(.system(size: 20, weight: .bold))
                 .padding(20)
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        state.toggle()
+                    }
+                }
         }
     }
-}
-
-#Preview {
-    ExpandedView()
 }

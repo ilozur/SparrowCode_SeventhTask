@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CollapsedView: View {
+    @Binding var state: Bool
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -18,10 +19,11 @@ struct CollapsedView: View {
             Text("Open")
                 .foregroundStyle(.white)
                 .font(.system(size: 20, weight: .bold))
+                .onTapGesture {
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        state.toggle()
+                    }
+                }
         }
     }
-}
-
-#Preview {
-    CollapsedView()
 }
