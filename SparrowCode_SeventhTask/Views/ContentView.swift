@@ -10,11 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State private var state: Bool = false
     var body: some View {
-        if state {
-            ExpandedView(state: $state)
-        } else {
-            CollapsedView(state: $state)
+        ZStack {
+            if state {
+                ExpandedView(state: $state)
+            } else {
+                CollapsedView(state: $state)
+            }
         }
+        .position(x: state ? UIScreen.main.bounds.width / 2 : UIScreen.main.bounds.width - 75,
+                  y: state ? UIScreen.main.bounds.height / 2 : UIScreen.main.bounds.height - 125)
     }
 }
 
